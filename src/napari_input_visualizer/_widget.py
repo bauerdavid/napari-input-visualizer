@@ -105,11 +105,12 @@ class InputVisualizerWidget(QWidget):
         self.setLayout(main_layout)
         QApplication.instance().installEventFilter(self)
 
-    def update_mouse_btn_color(self, buttons=0):
+    def update_mouse_btn_color(self, buttons=0, double_click=False):
         stylesheet_format = "background-color: %s; border-radius: 5px;"
-        self.left_btn_display.setStyleSheet(stylesheet_format % ("red" if buttons & Qt.LeftButton else "lightgray"))
-        self.right_btn_display.setStyleSheet(stylesheet_format % ("red" if buttons & Qt.RightButton else "lightgray"))
-        self.middle_btn_display.setStyleSheet(stylesheet_format % ("red" if buttons & Qt.MiddleButton else "lightgray"))
+        button_color = "green" if double_click else "red"
+        self.left_btn_display.setStyleSheet(stylesheet_format % (button_color if buttons & Qt.LeftButton else "lightgray"))
+        self.right_btn_display.setStyleSheet(stylesheet_format % (button_color if buttons & Qt.RightButton else "lightgray"))
+        self.middle_btn_display.setStyleSheet(stylesheet_format % (button_color if buttons & Qt.MiddleButton else "lightgray"))
 
     def update_modifiers_color(self, modifiers=0):
         stylesheet_format = "color: black; background-color: %s; border-radius: 5px;"
@@ -164,7 +165,13 @@ class InputVisualizerWidget(QWidget):
                     sequence_end = "Middle click"
             self.update_mouse_btn_color(event.buttons())
         elif event.type() == QEvent.MouseButtonDblClick:
-            sequence_end = "Double click"
+            if event.buttons() & Qt.LeftButton:
+                sequence_end = "Left double-click"
+            elif event.buttons() & Qt.RightButton:
+                sequence_end = "Right double-click"
+            elif event.buttons() & Qt.MiddleButton:
+                sequence_end = "Middle double-click"
+            self.update_mouse_btn_color(event.buttons(), True)
         elif event.type() == QEvent.Wheel:
             if event.angleDelta().y() > 0:
                 sequence_end = "Wheel " + u"\u2191"
