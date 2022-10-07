@@ -127,8 +127,10 @@ class InputVisualizerWidget(QWidget):
                 stylesheet += "border-image: url(%s) 0 0 0 0 stretch stretch;" % new_url
             else:
                 stylesheet = re.sub("url\\(.*\\)", "url(%s)" % new_url, stylesheet, 1)
+            stylesheet = re.sub("background-color: [^;]*;", "background-color: orange;", stylesheet, 1)
         else:
             stylesheet = re.sub("border-image: url\\(.*\\) 0 0 0 0 stretch stretch;", "", stylesheet, 1)
+            stylesheet = re.sub("background-color: [^;]*;", "background-color: lightgray;", stylesheet, 1)
         self.middle_btn_display.setStyleSheet(stylesheet)
 
     def eventFilter(self, source: 'QObject', event: 'QEvent') -> bool:
@@ -178,7 +180,7 @@ class InputVisualizerWidget(QWidget):
             else:
                 sequence_end = "Wheel " + u"\u2193"
             wheel_direction = event.angleDelta().y()
-            QTimer.singleShot(100, self.update_wheel_direction)
+            QTimer.singleShot(200, self.update_wheel_direction)
         else:
             # print(source.objectName(), event_lookup.get(event.type(), ""))
             return super().eventFilter(source, event)
