@@ -9,6 +9,15 @@
 
 Visualize keyboard and mouse button presses
 
+A simple tool to visualize input events like keyboard presses or mouse clicking and scrolling. Use it to create tutorial videos or to demonstrate a bug you encountered!
+
+## Demo:
+
+
+https://user-images.githubusercontent.com/36735863/194586424-1e6288d3-2c2f-412c-a1cb-91d139f787bd.mp4
+
+
+
 ----------------------------------
 
 This [napari] plugin was generated with [Cookiecutter] using [@napari]'s [cookiecutter-napari-plugin] template.
@@ -36,8 +45,7 @@ To install latest development version :
 
 ## Contributing
 
-Contributions are very welcome. Tests can be run with [tox], please ensure
-the coverage at least stays the same before you submit a pull request.
+Contributions are very welcome.
 
 ## License
 
