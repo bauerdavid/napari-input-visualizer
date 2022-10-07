@@ -148,9 +148,12 @@ class InputVisualizerWidget(QWidget):
             self.alt_down = modifiers & Qt.AltModifier
             self.meta_down = modifiers & Qt.MetaModifier
             self.update_modifiers_color(modifiers)
-            if event.type() != QKeyEvent.KeyRelease:
-                if event.key() in key_lookup:
+            if event.key() in key_lookup:
+                if event.type() != QKeyEvent.KeyRelease:
                     button_text = sequence_end = key_lookup[event.key()]
+                else:
+                    button_text = ""
+                self.key_seq_label.setText(button_text)
         elif event.type() in [QEvent.MouseButtonPress, QEvent.MouseButtonRelease]:
             if event.type() == QEvent.MouseButtonPress:
                 if event.buttons() & Qt.LeftButton:
@@ -184,5 +187,4 @@ class InputVisualizerWidget(QWidget):
         if sequence_end:
             sequence_str += sequence_end
             self.last_key_seq.setText("Last action: %s" % sequence_str)
-        self.key_seq_label.setText(button_text)
         return super().eventFilter(source, event)
