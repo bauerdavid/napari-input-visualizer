@@ -131,7 +131,6 @@ class InputVisualizerWidget(QWidget):
         self.middle_btn_display.setStyleSheet(stylesheet)
 
     def eventFilter(self, source: 'QObject', event: 'QEvent') -> bool:
-        button_text = ""
         sequence_str = ""
         sequence_end = ""
         wheel_direction = 0
@@ -141,6 +140,7 @@ class InputVisualizerWidget(QWidget):
             self.alt_down = False
             self.meta_down = False
             self.update_mouse_btn_color()
+            self.update_modifiers_color()
         elif event.type() in [QEvent.KeyPress, QEvent.KeyRelease] and not event.isAutoRepeat():
             modifiers = event.modifiers()
             self.shift_down = modifiers & Qt.ShiftModifier
