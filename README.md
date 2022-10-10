@@ -3,8 +3,6 @@
 [![License BSD-3](https://img.shields.io/pypi/l/napari-input-visualizer.svg?color=green)](https://github.com/bauerdavid/napari-input-visualizer/raw/main/LICENSE)
 [![PyPI](https://img.shields.io/pypi/v/napari-input-visualizer.svg?color=green)](https://pypi.org/project/napari-input-visualizer)
 [![Python Version](https://img.shields.io/pypi/pyversions/napari-input-visualizer.svg?color=green)](https://python.org)
-[![tests](https://github.com/bauerdavid/napari-input-visualizer/workflows/tests/badge.svg)](https://github.com/bauerdavid/napari-input-visualizer/actions)
-[![codecov](https://codecov.io/gh/bauerdavid/napari-input-visualizer/branch/main/graph/badge.svg)](https://codecov.io/gh/bauerdavid/napari-input-visualizer)
 [![napari hub](https://img.shields.io/endpoint?url=https://api.napari-hub.org/shields/napari-input-visualizer)](https://napari-hub.org/plugins/napari-input-visualizer)
 
 Visualize keyboard and mouse button presses
