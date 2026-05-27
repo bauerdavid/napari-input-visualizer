@@ -329,7 +329,6 @@ class InputVisualizerWidget(QWidget):
             self.update_wheel_direction(wheel_direction)
             QTimer.singleShot(200, self.update_wheel_direction)
         else:
-            print(source.objectName(), event.type(), event_lookup.get(event.type(), "NOT FOUND"))
             return super().eventFilter(source, event)
         if self.ctrl_down:
             sequence_str += "Ctrl + "
