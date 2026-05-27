@@ -251,14 +251,14 @@ class InputVisualizerWidget(QWidget):
         self.setLayout(main_layout)
         QApplication.instance().installEventFilter(self)
 
-    def update_mouse_btn_color(self, buttons=0, double_click=False):
+    def update_mouse_btn_color(self, buttons=Qt.NoButton, double_click=False):
         stylesheet_format = "background-color: %s; border-radius: 5px;"
         button_color = "green" if double_click else "red"
         self.left_btn_display.setStyleSheet(stylesheet_format % (button_color if buttons & Qt.LeftButton else "lightgray"))
         self.right_btn_display.setStyleSheet(stylesheet_format % (button_color if buttons & Qt.RightButton else "lightgray"))
         self.middle_btn_display.setStyleSheet(stylesheet_format % (button_color if buttons & Qt.MiddleButton else "lightgray"))
 
-    def update_modifiers_color(self, modifiers=0):
+    def update_modifiers_color(self, modifiers=Qt.NoModifier):
         stylesheet_format = "color: black; background-color: %s; border-radius: 5px;"
         self.ctrl_label.setStyleSheet(stylesheet_format % ("red" if modifiers & Qt.ControlModifier else "lightgray"))
         self.alt_label.setStyleSheet(stylesheet_format % ("red" if modifiers & Qt.AltModifier else "lightgray"))
