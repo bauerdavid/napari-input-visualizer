@@ -326,11 +326,11 @@ class InputVisualizerWidget(QWidget):
             else:
                 sequence_end = "Wheel " + u"\u2193"
             wheel_direction = event.angleDelta().y()
+            self.update_wheel_direction(wheel_direction)
             QTimer.singleShot(200, self.update_wheel_direction)
         else:
             print(source.objectName(), event.type(), event_lookup.get(event.type(), "NOT FOUND"))
             return super().eventFilter(source, event)
-        self.update_wheel_direction(wheel_direction)
         if self.ctrl_down:
             sequence_str += "Ctrl + "
         if self.shift_down:
